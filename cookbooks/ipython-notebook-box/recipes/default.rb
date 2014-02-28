@@ -36,3 +36,10 @@ execute "install_requirements" do
   command "pip install -r /vagrant/requirements.txt --allow-unverified matplotlib --allow-all-external"
   # action :nothing
 end
+
+cookbook_file '/home/vagrant/.bash_profile' do
+   source "bash_profile"
+   owner 'vagrant'
+   group 'vagrant'
+   mode '0644'
+end
