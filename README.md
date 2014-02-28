@@ -10,7 +10,7 @@ The project is inspired by Matthew Russell's [Mining the Social Web, 2nd edition
 
 ## Using the box
 
-Before you start, you'll need to install [Vagrant](http://www.vagrantup.com/) and [VirtualBox](https://www.virtualbox.org/) installed.  Matthew Russell's excellent [Appendix A: Virtual Machine Experience](http://nbviewer.ipython.org/github/ptwobrussell/Mining-the-Social-Web-2nd-Edition/blob/master/ipynb/_Appendix%20A%20-%20Virtual%20Machine%20Experience.ipynb) provides full details on how to get set up.  
+Before you start, you'll need to install [Vagrant](http://www.vagrantup.com/) and [VirtualBox](https://www.virtualbox.org/) .  Matthew Russell's excellent [Appendix A: Virtual Machine Experience](http://nbviewer.ipython.org/github/ptwobrussell/Mining-the-Social-Web-2nd-Edition/blob/master/ipynb/_Appendix%20A%20-%20Virtual%20Machine%20Experience.ipynb) provides full details on how to get set up.  
 
 Once you've got these installed, first create the virtual machine:
 
