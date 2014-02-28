@@ -32,7 +32,7 @@ Vagrant.configure("2") do |config|
     override.vm.box = "precise64"
     override.vm.box_url = "http://files.vagrantup.com/precise64.box"
 
-    config.vm.synced_folder "/Users", "/host"
+    config.vm.synced_folder File.expand_path("..", Dir.pwd), "/host"
 
 
     # Port forwarding details
