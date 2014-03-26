@@ -39,6 +39,7 @@ Vagrant.configure("2") do |config|
   
     # IPython Notebook
     override.vm.network :forwarded_port, host: 8888, guest: 8888
+    override.vm.network :forwarded_port, host: 57575, guest: 57575
 
     
     # You can increase the default amount of memory used by your VM by
