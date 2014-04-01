@@ -22,6 +22,8 @@ Vagrant.configure("2") do |config|
   # SSH forwarding: See https://help.github.com/articles/using-ssh-agent-forwarding
   config.ssh.forward_agent = true
 
+  config.omnibus.chef_version = "11.4.4"
+
   #########################################################################
   # Virtualbox configuration - the default provider for running a local VM
   #########################################################################
@@ -61,16 +63,19 @@ Vagrant.configure("2") do |config|
     chef.cookbooks_path = "cookbooks"
     chef.json = {
       :answer => "42",
+      'rbenv' => {
+        'user_installs' => [
+          {
+            'user' => 'vagrant',
+            'rubies' => [ "1.9.3-p545" ],
+            'global' => '1.9.3-p545'
+          }
+        ]
+      }
     }
     chef.run_list = [
       "recipe[ipython-notebox::default]"
     ]
   end
-
-  #
-  # Now install ruby per http://rvm.io/integration/vagrant
-  #
- config.vm.provision :shell, :path => "cookbooks/rvm/install-rvm.sh",  :args => "stable"
- config.vm.provision :shell, :path => "cookbooks/rvm/install-ruby.sh", :args => "1.9.3"
 
 end

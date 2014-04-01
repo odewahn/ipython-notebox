@@ -1,8 +1,6 @@
 
 include_recipe "apt"
 include_recipe "runit"
-include_recipe "python"
-
 
 dependencies = [
   "libfreetype6-dev", 
@@ -20,6 +18,39 @@ dependencies.each do |pkg|
   end
 end
 
+# Install Ruby
+# --------------------------------------------------------------
+
+include_recipe "ruby_build"
+include_recipe "rbenv::user"
+include_recipe "rbenv::vagrant"
+
+rbenv_gem "bundler" do
+  rbenv_version   "1.9.3-p545"
+  user            "vagrant"
+  version         "1.3.5"
+  action          :install
+end
+
+# You can either install your custom gem like this:
+#rbenv_gem "atlas2ipynb" do
+#  rbenv_version   "1.9.3-p545"
+#  user            "vagrant"
+#  action          :install
+#end
+
+# Or – preferred – add a gemfile to your project and run bundle install in the cookbook
+#rbenv_script "bundle_install" do
+# rbenv_version   "1.9.3-p545"
+# user            "vagrant"
+# cwd             "/vagrant"
+# code            "bundle install"
+#end
+
+# Install Python
+# --------------------------------------------------------------
+
+include_recipe "python"
 
 packages = [
   # Matplotlib won't install any other way right now unless you install numpy first.
