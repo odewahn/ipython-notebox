@@ -10,5 +10,7 @@ depends "runit", "<= 1.0.4"       # ref: bf23c97
 depends "python", "~> 1.3.6"      # ref: ff36893
 depends "build-essential", "~> 1.4.2"
 depends "yum", "~> 2.3.0"
+depends "ruby_build"
+depends "rbenv"
 
 supports "ubuntu"
