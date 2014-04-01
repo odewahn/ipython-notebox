@@ -11,6 +11,7 @@ dependencies = [
   "vim", 
   "git-core",
   "build-essential",
+  "curl"
 ]
 
 dependencies.each do |pkg|

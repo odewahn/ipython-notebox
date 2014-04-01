@@ -63,8 +63,14 @@ Vagrant.configure("2") do |config|
       :answer => "42",
     }
     chef.run_list = [
-      "recipe[ipython-notebook-box::default]"
+      "recipe[ipython-notebox::default]"
     ]
   end
+
+  #
+  # Now install ruby per http://rvm.io/integration/vagrant
+  #
+ config.vm.provision :shell, :path => "cookbooks/rvm/install-rvm.sh",  :args => "stable"
+ config.vm.provision :shell, :path => "cookbooks/rvm/install-ruby.sh", :args => "1.9.3"
 
 end
