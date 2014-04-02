@@ -33,19 +33,20 @@ rbenv_gem "bundler" do
 end
 
 # You can either install your custom gem like this:
-#rbenv_gem "atlas2ipynb" do
-#  rbenv_version   "1.9.3-p545"
-#  user            "vagrant"
-#  action          :install
-#end
+rbenv_gem "atlas2ipynb" do
+  rbenv_version   "1.9.3-p545"
+  user            "vagrant"
+  action          :install
+end
 
-# Or – preferred – add a gemfile to your project and run bundle install in the cookbook
-#rbenv_script "bundle_install" do
-# rbenv_version   "1.9.3-p545"
-# user            "vagrant"
-# cwd             "/vagrant"
-# code            "bundle install"
-#end
+
+# You can either install your custom gem like this:
+rbenv_gem "atlas-api" do
+  rbenv_version   "1.9.3-p545"
+  user            "vagrant"
+  action          :install
+end
+
 
 # Install Python
 # --------------------------------------------------------------
