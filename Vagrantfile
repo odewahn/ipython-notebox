@@ -40,6 +40,7 @@ Vagrant.configure("2") do |config|
     override.vm.network :forwarded_port, host: 8888, guest: 8888
     override.vm.network :forwarded_port, host: 8000, guest: 8000
 
+    config.vm.synced_folder ".", "/vagrant"
     
     # You can increase the default amount of memory used by your VM by
     # adjusting this value below (in MB) and reprovisioning.
