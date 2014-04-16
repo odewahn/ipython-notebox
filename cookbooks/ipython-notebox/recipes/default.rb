@@ -77,3 +77,14 @@ cookbook_file '/home/vagrant/.bash_profile' do
    group 'vagrant'
    mode '0644'
 end
+
+#******************************************************************************************
+#  Set up docker
+#******************************************************************************************
+
+execute "install_docker" do
+  command "curl -s https://get.docker.io/ubuntu/ | sudo sh"
+  not_if "dpkg --get-selections | grep -v deinstall | grep lxc-docker-0.10.0"
+end
+
+
