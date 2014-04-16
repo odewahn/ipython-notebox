@@ -94,6 +94,7 @@ end
 execute "install_packer" do
   cwd "/usr/local/bin"
   command "wget https://dl.bintray.com/mitchellh/packer/0.5.2_linux_386.zip; unzip 0.5.2_linux_386.zip"
+  not_if "packer --version"
 end  
 
 
