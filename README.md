@@ -85,7 +85,7 @@ To create the image:
 ```
 sudo su - root
 cd /vagrant
-packer build packer.json
+packer build packer-ipython-notebox-docker.json
 ```
 
 After you build the image, you can run it like this:
