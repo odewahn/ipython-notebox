@@ -55,7 +55,6 @@ python -m SimpleHTTPServer
 In the directory and then open "http://localhost:8000" in your browser.
 
 
-
 ## TODO
 
 Here are some things we still need to figure out
@@ -71,3 +70,29 @@ It's very likely that you'll want to install some additional requirements/depend
 If you're using Ruby, you might make a Gemfile and then rune "bundle install". 
 
 We'll need to figure this out as we go, so we're open to suggestions. 
+
+## Building a docker image
+
+This VM also installs [Packer](http://www.packer.io/) and [Docker](https://www.docker.io/) in order to create a Docker image of the VM.  This will (eventually!) let us make a much simpler process for spinning up and deploying new content repos:
+
+* Use packer to make an ipython-notebox base docker image
+* For content, use inherit from ipython-notebox and use Dockerfiles to install the content
+
+There's still more work to do here.
+
+To create the image:
+
+```
+sudo su - root
+cd /vagrant
+packer build packer.json
+```
+
+After you build the image, you can run it like this:
+
+```
+cat image.tar | docker import - testimage
+docker run -i -t testimage /bin/bash
+```
+
+
