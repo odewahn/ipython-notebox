@@ -8,9 +8,17 @@
    "provisioners": [
        {
           "type": "shell",
-          "inline":["mkdir /root/pynb"]
+          "inline":[
+             "mkdir /root/pynb",
+             "apt-get update",
+             "apt-get install -y curl"
+           ]
        },
        {
+          "prevent_sudo": false,
+          "skip_install": false,
+          "execute_command": "{{if .Sudo}}sudo -S{{end}} chef-solo --no-color -c {{.ConfigPath}} -j {{.JsonPath}} -l debug",
+          "install_command": "{{if .Sudo}}sudo -S{{end}} bash -c 'curl -L https://www.opscode.com/chef/install.sh| bash -s -- -v 11.8'", 
           "type": "chef-solo",
           "cookbook_paths": ["cookbooks"],
           "json": {

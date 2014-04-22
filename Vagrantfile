@@ -22,7 +22,8 @@ Vagrant.configure("2") do |config|
   # SSH forwarding: See https://help.github.com/articles/using-ssh-agent-forwarding
   config.ssh.forward_agent = true
 
-  config.omnibus.chef_version = "11.4.4"
+  # update chef before running chef
+  config.vm.provision :shell, :inline => "gem install chef --version 11.6.0.rc2 --no-rdoc --no-ri --conservative"
 
   #########################################################################
   # Virtualbox configuration - the default provider for running a local VM
