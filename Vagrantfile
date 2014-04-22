@@ -22,8 +22,6 @@ Vagrant.configure("2") do |config|
   # SSH forwarding: See https://help.github.com/articles/using-ssh-agent-forwarding
   config.ssh.forward_agent = true
 
-  config.omnibus.chef_version = "11.4.4"
-
   #########################################################################
   # Virtualbox configuration - the default provider for running a local VM
   #########################################################################
@@ -54,7 +52,9 @@ Vagrant.configure("2") do |config|
   # here as MTSW_ environment variables that you could set (or hard code.)
   #########################################################################
   
-
+  # update chef before running chef
+  config.vm.provision :shell, :inline => "gem install chef --version 11.12.2 --no-rdoc --no-ri --conservative"
+  
   # Chef-Solo provisioning
   config.vm.provision :chef_solo do |chef|
     chef.log_level = :debug
