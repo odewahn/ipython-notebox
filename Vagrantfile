@@ -34,15 +34,13 @@ Vagrant.configure("2") do |config|
     override.vm.box = "precise64"
     override.vm.box_url = "http://files.vagrantup.com/precise64.box"
 
-    config.vm.synced_folder File.expand_path("..", Dir.pwd), "/host"
-
-
     # Port forwarding details
   
     # IPython Notebook
     override.vm.network :forwarded_port, host: 8888, guest: 8888
-    override.vm.network :forwarded_port, host: 57575, guest: 57575
+    override.vm.network :forwarded_port, host: 8000, guest: 8000
 
+    config.vm.synced_folder ".", "/vagrant"
     
     # You can increase the default amount of memory used by your VM by
     # adjusting this value below (in MB) and reprovisioning.

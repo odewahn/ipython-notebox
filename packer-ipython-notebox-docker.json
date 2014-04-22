@@ -1,0 +1,31 @@
+
+{
+   "builders": [{
+      "type": "docker",
+      "image": "ubuntu",
+      "export_path": "ipython-notebox-docker.tar"
+   }],
+   "provisioners": [
+       {
+          "type": "shell",
+          "inline":["mkdir /root/pynb"]
+       },
+       {
+          "type": "chef-solo",
+          "cookbook_paths": ["cookbooks"],
+          "json": {
+            "rbenv":{
+               "user_installs": [{
+                  "user": "vagrant",
+                  "rubies": [ "1.9.3-p545" ],
+                  "global": "1.9.3-p545"
+               }]
+            }
+          },
+          "run_list": [
+	     "recipe[ipython-notebox::default]"
+	  ]
+       }
+
+   ] 
+}
